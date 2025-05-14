@@ -156,8 +156,11 @@ SampleApp = (function () {
                 showAdditionalScreensServerIsDown();
                 return;
             }
-            var redirectUrl = callbackUrl + "?status=fail&user_id=" + userId;
-            window.location.href = redirectUrl;
+            if (callbackUrl) {
+                var redirectUrl = callbackUrl + "?status=fail&user_id=" + userId;
+                window.location.href = redirectUrl;
+                return;
+            }
         }
         SampleAppUtilities.showMainUI();
     };

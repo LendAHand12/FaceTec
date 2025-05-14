@@ -11,7 +11,7 @@ export var Config = (function () {
     // In Production, you likely will handle network requests elsewhere and without the use of this variable.
     // See https://dev.facetec.com/security-best-practices?link=facetec-server-rest-endpoint-security for more information.
     // NOTE: This field is auto-populated by the FaceTec SDK Configuration Wizard.
-    var BaseURL = "http://3.107.26.68:8080";
+    var BaseURL = "https://amfatec.com";
 
     // -------------------------------------
     // REQUIRED
