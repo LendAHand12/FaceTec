@@ -108,6 +108,7 @@ SampleApp = (function () {
             SampleAppUtilities.fadeOutMainUIAndPrepareForSession();
             // Get a Session Token from the FaceTec SDK, then start the 3D to 3D Matching.
             getSessionToken(function (sessionToken) {
+                latestEnrollmentIdentifier = "ID_" + userId;
                 latestProcessor = new VerificationProcessor(sessionToken, SampleApp);
             });
         // }
@@ -134,6 +135,7 @@ SampleApp = (function () {
     // Show the final result with the Session Review Screen.
     var onComplete;
     onComplete = function (sessionResult, idScanResult, latestNetworkResponseStatus) {
+        console.log({latestProcessor, sessionResult});
         latestSessionResult = sessionResult;
         latestIDScanResult = idScanResult;
         if (latestProcessor.isSuccess()) {
@@ -146,8 +148,7 @@ SampleApp = (function () {
                 window.location.href = redirectUrl;
                 return;
             }
-        }
-        else {
+        } else {
             // Log result for unSuccess Sessions.
             DeveloperStatusMessages.logScanOncompleteResult(sessionResult, idScanResult);
             // Check for server offline
@@ -155,6 +156,8 @@ SampleApp = (function () {
                 showAdditionalScreensServerIsDown();
                 return;
             }
+            var redirectUrl = callbackUrl + "?status=fail&user_id=" + userId;
+            window.location.href = redirectUrl;
         }
         SampleAppUtilities.showMainUI();
     };
