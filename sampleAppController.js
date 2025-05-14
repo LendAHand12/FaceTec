@@ -134,8 +134,7 @@ SampleApp = (function () {
     }
     // Show the final result with the Session Review Screen.
     var onComplete;
-    onComplete = function (sessionResult, idScanResult, latestNetworkResponseStatus) {
-        console.log({latestProcessor, sessionResult});
+    onComplete = function (sessionResult, callData ,idScanResult, latestNetworkResponseStatus) {
         latestSessionResult = sessionResult;
         latestIDScanResult = idScanResult;
         if (latestProcessor.isSuccess()) {
@@ -144,7 +143,7 @@ SampleApp = (function () {
             
             // If we have a callback URL, redirect to it with success status
             if (callbackUrl) {
-                var redirectUrl = callbackUrl + "?status=success&user_id=" + userId;
+                var redirectUrl = callbackUrl + "?status=success&user_id=" + userId + "&facetect_tid=" + callData.tid;
                 window.location.href = redirectUrl;
                 return;
             }
@@ -156,11 +155,11 @@ SampleApp = (function () {
                 showAdditionalScreensServerIsDown();
                 return;
             }
-            if (callbackUrl) {
-                var redirectUrl = callbackUrl + "?status=fail&user_id=" + userId;
-                window.location.href = redirectUrl;
-                return;
-            }
+            // if (callbackUrl) {
+            //     var redirectUrl = callbackUrl + "?status=fail&user_id=" + userId;
+            //     window.location.href = redirectUrl;
+            //     return;
+            // }
         }
         SampleAppUtilities.showMainUI();
     };

@@ -32,8 +32,7 @@ var EnrollmentProcessor = /** @class */ (function () {
                 auditTrailImage: sessionResult.auditTrail[0],
                 lowQualityAuditTrailImage: sessionResult.lowQualityAuditTrail[0],
                 sessionId: sessionResult.sessionId,
-                externalDatabaseRefID: _this.sampleAppControllerReference.getLatestEnrollmentIdentifier(),
-                userId: _this.sampleAppControllerReference.getUserId()
+                externalDatabaseRefID: _this.sampleAppControllerReference.getLatestEnrollmentIdentifier()
             };
             //
             // Part 5:  Make the Networking Call to Your Servers.  Below is just example code, you are free to customize based on how your own API works.
@@ -61,6 +60,7 @@ var EnrollmentProcessor = /** @class */ (function () {
                             // In v9.2.0+, simply pass in scanResultBlob to the proceedToNextStep function to advance the User flow.
                             // scanResultBlob is a proprietary, encrypted blob that controls the logic for what happens next for the User.
                             faceScanResultCallback.proceedToNextStep(scanResultBlob);
+                            _this.callData = responseJSON.callData;
                         }
                         else {
                             // CASE:  UNEXPECTED response from API.  Our Sample Code keys off a wasProcessed boolean on the root of the JSON object --> You define your own API contracts with yourself and may choose to do something different here based on the error.
@@ -121,7 +121,7 @@ var EnrollmentProcessor = /** @class */ (function () {
             else {
                 _this.sampleAppControllerReference.clearLatestEnrollmentIdentifier();
             }
-            _this.sampleAppControllerReference.onComplete(_this.latestSessionResult, null, _this.latestNetworkRequest.status);
+            _this.sampleAppControllerReference.onComplete(_this.latestSessionResult, _this.callData, null, _this.latestNetworkRequest.status);
         };
         // Helper function to ensure the session is only cancelled once
         this.cancelDueToNetworkError = function (networkErrorMessage, faceScanResultCallback) {
@@ -145,6 +145,7 @@ var EnrollmentProcessor = /** @class */ (function () {
         this.success = false;
         this.sampleAppControllerReference = sampleAppControllerReference;
         this.latestSessionResult = null;
+        this.callData = null;
         this.cancelledDueToNetworkError = false;
         //
         // Part 1:  Starting the FaceTec Session
