@@ -93,7 +93,7 @@ SampleApp = (function () {
         SampleAppUtilities.fadeOutMainUIAndPrepareForSession();
         // Get a Session Token from the FaceTec SDK, then start the Enrollment.
         getSessionToken(function (sessionToken) {
-            latestEnrollmentIdentifier = "ID_" + "12345";
+            latestEnrollmentIdentifier = "ID_" + userId;
             latestProcessor = new EnrollmentProcessor(sessionToken, SampleApp);
         });
     }
