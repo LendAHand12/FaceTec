@@ -143,7 +143,10 @@ SampleApp = (function () {
             
             // If we have a callback URL, redirect to it with success status
             if (callbackUrl) {
-                var redirectUrl = callbackUrl + "&status=success&user_id=" + userId + "&facetect_tid=" + callData.tid;
+                var redirectUrl = callbackUrl + "&status=success&user_id=" + userId;
+                if(callData && callData.tid) {
+                   redirectUrl = redirectUrl + "&facetect_tid=" + callData.tid 
+                }
                 window.location.href = redirectUrl;
                 return;
             }
