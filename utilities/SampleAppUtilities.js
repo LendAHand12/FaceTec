@@ -193,8 +193,8 @@ SampleAppUtilities = (function () {
             document.getElementsByClassName("wrapping-box-container")[0].style.left = "50%";
             document.getElementsByClassName("wrapping-box-container")[0].style.transform = "translate(-50%, -50%)";
             // Adjust button margins
-            document.getElementById("liveness-button").style.marginTop = "unset";
-            document.getElementById("design-showcase-button").style.marginBottom = "unset";
+            // document.getElementById("liveness-button").style.marginTop = "unset";
+            // document.getElementById("design-showcase-button").style.marginBottom = "unset";
             // Setup footer sizing
             var footerFontSize = "100%";
             if (windowWidth < 768) {
