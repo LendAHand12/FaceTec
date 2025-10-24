@@ -40,7 +40,7 @@ export var Config = (function () {
     // Your App MUST serve down the key data via your own API. This allows you to change/update keys without making a client-side change.
     // Please see https://dev.facetec.com/licensing?link=integrating-production-licenses for more information.
     var ProductionKeyText =
-        "{  \"domains\": \"amfatec.com\",  \"expiryDate\": \"2025-12-10\",  \"key\": \"003045022003dec00876c1acf905961dff1671d009b5afda210496ec2a7a9d81dddeed5c2302210082e0fd7934fd23708f1b6deaa0e49a05a21455c40062be5e036dc7396e6ac883\"}"
+        "{  \"domains\": \"amfatec.com\",  \"expiryDate\": \"2025-12-10\",  \"key\": \"003046022100bc34623adf6c3935680bfbc17870eb66fa227e6d0d08a572ab802057daeae656022100d3f96b14c62026050470ce042706a604a75385ebd7dd5d62a4419274ff1907ed\"}"
     
 
     // -------------------------------------
